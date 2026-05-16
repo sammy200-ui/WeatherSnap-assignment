@@ -15,6 +15,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Clean up any temporary images left from previous discarded reports
+        cacheDir.listFiles { file ->
+            file.name.startsWith("report_img_")
+        }?.forEach { it.delete() }
+
         setContent {
             WeatherSnapTheme {
                 Surface(

@@ -25,7 +25,7 @@ import com.weathersnap.app.ui.viewmodel.WeatherViewModel
 
 @Composable
 fun WeatherScreen(
-    onNavigateToCreateReport: () -> Unit,
+    onNavigateToCreateReport: (String, Float, String, Int, Float, Float) -> Unit,
     onNavigateToSavedReports: () -> Unit,
     viewModel: WeatherViewModel = hiltViewModel()
 ) {
@@ -212,7 +212,16 @@ fun WeatherScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(
-                    onClick = onNavigateToCreateReport,
+                    onClick = {
+                        onNavigateToCreateReport(
+                            weatherState.cityName!!,
+                            weather.temperature.toFloat(),
+                            viewModel.mapWeatherCode(weather.weatherCode),
+                            weather.humidity,
+                            weather.windSpeed.toFloat(),
+                            weather.pressure.toFloat()
+                        )
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = PrimaryLightGreen),
                     shape = RoundedCornerShape(24.dp),
                     modifier = Modifier.fillMaxWidth()
