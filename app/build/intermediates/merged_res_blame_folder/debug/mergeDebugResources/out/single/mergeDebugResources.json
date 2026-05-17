@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "com.weathersnap.app-debug-64:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.weathersnap.app-main-66:/drawable/ic_launcher_foreground.xml"
+    }
+]
