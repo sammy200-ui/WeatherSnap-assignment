@@ -117,7 +117,7 @@ fun CustomCameraScreen(
             onClick = {
                 val photoFile = File(context.cacheDir, "report_img_${System.currentTimeMillis()}.jpg")
                 val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
-                val executor = Executors.newSingleThreadExecutor()
+                val executor = ContextCompat.getMainExecutor(context)
 
                 cameraController.takePicture(
                     outputOptions,
